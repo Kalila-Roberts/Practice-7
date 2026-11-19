@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalila Roberts | Interior Design Portfolio</title>
+    <style>
+        :root {
+            --primary: #0099C6;
+            --primary-dark: #00779E;
+            --text-main: #0F172A;
+            --text-muted: #475569;
+            --bg-body: #F7FBFC;
+            --bg-card: #FFFFFF;
+            --border-color: #CBD5E1;
+            --accent-blush: #E2F3F8;
+            --font-family: 'Times New Roman', Times, serif;
+        }
+
+        [data-theme="dark"] {
+            --primary: #33ABCE;
+            --primary-dark: #0099C6;
+            --text-main: #F1F5F9;
+            --text-muted: #94A3B8;
+            --bg-body: #0B131A;
+            --bg-card: #131F2A;
+            --border-color: #2D3E50;
+            --accent-blush: #162A38;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-body);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-badge {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: normal;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-theme, .btn-customize {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 0.5rem 0.9rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: var(--font-family);
+            font-size: 0.9rem;
+        }
+
+        .btn-theme:hover, .btn-customize:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: normal;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        .hero-statement {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-style: italic;
+            border-left: 3px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            font-family: var(--font-family);
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            border: 1px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Hero Card */
+        .hero-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 153, 198, 0.08);
+            position: relative;
+        }
+
+        .hero-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .school-badge-box {
+            background-color: var(--accent-blush);
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: normal;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-card h4 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+            font-weight: normal;
+        }
+
+        .stat-card span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-header-banner {
+            background-color: var(--accent-blush);
+            padding: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .project-header-banner h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-date {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .project-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-body p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .project-media-stack {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: var(--accent-blush);
+        }
+
+        .project-img--wide {
+            grid-column: 1 / -1;
+            height: 180px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background-color: var(--accent-blush);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .project-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            width: 90%;
+            max-width: 800px;
+            max-height: 85vh;
+            border-radius: 12px;
+            padding: 2.5rem;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media(max-width: 768px) {
+            .hero { grid-template-columns: 1fr; padding-top: 8rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .project-media-stack { grid-template-columns: 1fr; }
+            .project-img--wide { grid-column: auto; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">KR. <span class="logo-badge">St. John's College</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="btn-theme" onclick="toggleTheme()">🌓 Theme</button>
+                <button class="btn-customize" onclick="toggleEditMode()">✏️ Customize</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Kalila Roberts<br><span>Interior Design</span></h1>
+            <p class="hero-subtitle">St. John's College • Class of 2027 • Nassau, The Bahamas</p>
+            <p class="hero-statement">"A proactive dedicated student that thrives off of curiosity combines creative vision with execution."</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+            </div>
+        </div>
+        <div class="hero-card">
+            <h3>Kalila Roberts</h3>
+            <p>Aspiring Interior Architecture &amp; Spatial Design Student</p>
+            <div class="school-badge-box">
+                📍 Nassau, The Bahamas<br>St. John's College (Age 16)
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Blending Bahamian heritage with functional spatial storytelling</p>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>I’m Kalila Roberts, a 16-year-old Bahamian girl that attends St. John’s College. I hope to pursue a Bachelor of Fine Arts in Interior Design. Growing up, I had very little exposure to art, but I was enlightened by the little bits I was exposed to.</p>
+                <p>The art I was exposed to was my uncle's art on the walls of my house and Junkanoo, which is a cultural and community-driven festival. It’s driven through rhythmic sounds, music, and dance with an eccentric display of colors built from repurposing discarded or reused items. I thrive on curiosity and creativity—I’m always deep in my “what if” and “I wonder why” thoughts.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4>16</h4>
+                    <span>Age</span>
+                </div>
+                <div class="stat-card">
+                    <h4>2027</h4>
+                    <span>Graduation Year</span>
+                </div>
+                <div class="stat-card">
+                    <h4>AutoCAD</h4>
+                    <span>Drafting Proficiency</span>
+                </div>
+                <div class="stat-card">
+                    <h4>BFA</h4>
+                    <span>Target Degree Focus</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Design Projects</h2>
+        <p class="section-subtitle">AutoCAD floor plans, mood boards, finishes, and furniture selections from my coursework</p>
+
+        <div class="projects-grid">
+            <!-- Project 1: My Ethereal Dream Bedroom -->
+            <div class="project-card">
+                <div class="project-header-banner">
+                    <h3>My Ethereal Dream Bedroom</h3>
+                    <span class="project-date">26/10/2026</span>
+                </div>
+                <div class="project-body">
+                    <div class="project-media-stack">
+                        <!-- PDF Page 3: Mood Board -->
+                        <img src="images/bedroom-moodboard.png" alt="My Ethereal Dream Bedroom Mood Board" class="project-img project-img--wide">
+                        <!-- PDF Page 4: AutoCAD Floor Plan (Primary Bedroom, Bath, Closets, Dresser, Tub, Shower) -->
+                        <img src="images/bedroom-floorplan.png" alt="My Ethereal Dream Bedroom AutoCAD Floor Plan" class="project-img">
+                        <!-- PDF Page 5: Finishes (Floor Tiles, Supernova N510-4 Wall Paint, Shower Tiles) -->
+                        <img src="images/bedroom-finishes.png" alt="Bedroom Finishes and Supernova N510-4 Paint" class="project-img">
+                        <!-- PDF Page 6: Fixtures (Ceiling Fan, Bathroom Cupboard & Sink, Toilet Room) -->
+                        <img src="images/bedroom-fixtures.png" alt="Bedroom and Bath Fixtures" class="project-img">
+                        <!-- PDF Page 7: Furniture & Fabrics (Closet Dresser, Bed Frame, Vanity Set, Lounge Chair, Rugs) -->
+                        <img src="images/bedroom-furniture.png" alt="Bedroom Furniture and Fabrics" class="project-img">
+                    </div>
+                    <p>Designed as an escape where soft luxury meets calm beauty, pairing soothing plaster white, soft champagne, and twilight tones with Supernova N510-4 wall paint, an AutoCAD primary suite layout, and curated finishes and furnishings.</p>
+                    <div class="project-tags">
+                        <span class="tag">AutoCAD</span>
+                        <span class="tag">Residential</span>
+                        <span class="tag">Supernova N510-4</span>
+                    </div>
+                    <div class="project-footer">
+                        <button class="btn btn-primary" onclick="openModal('modal-bedroom')">Read Concept &amp; Specs</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Harbour Side Restaurant Concept -->
+            <div class="project-card">
+                <div class="project-header-banner">
+                    <h3>Harbour Side Restaurant Concept</h3>
+                    <span class="project-date">28/10/2026</span>
+                </div>
+                <div class="project-body">
+                    <div class="project-media-stack">
+                        <!-- PDF Page 3: Mood Board -->
+                        <img src="images/harbour-moodboard.png" alt="Harbour Side Restaurant Mood Board" class="project-img project-img--wide">
+                        <!-- PDF Page 4: Supervised AutoCAD Floor Plan -->
+                        <img src="images/harbour-floorplan.png" alt="Harbour Side Restaurant AutoCAD Floor Plan" class="project-img">
+                        <!-- PDF Page 5: Feature Piece -->
+                        <img src="images/harbour-feature-piece.png" alt="Harbour Side Junkanoo Feature Piece" class="project-img">
+                        <!-- PDF Page 6: Finishes & Bluebird Skies Paint -->
+                        <img src="images/harbour-finishes.png" alt="Harbour Side Finishes and Bluebird Skies Paint" class="project-img">
+                        <!-- PDF Page 7: Dining, Booth, High Top Furniture & Fabrics -->
+                        <img src="images/harbour-furniture.png" alt="Harbour Side Furniture and Fabrics" class="project-img">
+                    </div>
+                    <p>Celebrates Lucayan heritage, early maritime history, and Junkanoo energy with woven textures, rope, brass, Bluebird Skies accents, a central feature piece, and a full dining, banquette, and bar AutoCAD layout.</p>
+                    <div class="project-tags">
+                        <span class="tag">AutoCAD</span>
+                        <span class="tag">Hospitality</span>
+                        <span class="tag">Junkanoo Heritage</span>
+                    </div>
+                    <div class="project-footer">
+                        <button class="btn btn-primary" onclick="openModal('modal-harbour')">Read Concept &amp; Specs</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="modal-bedroom">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-bedroom')">&times;</button>
+            <h3>My Ethereal Dream Bedroom</h3>
+            <p class="project-date">26/10/2026</p>
+            <p style="margin-top: 1rem;">This bedroom is designed as an escape, a place where soft luxury meets calm beauty. Gentle, flowing drapery and bedding that feels like clouds wrap the space in comfort, paired with smooth metallic touches, warm lighting, plaster white, soft champagne, and twilight tones, and Supernova N510-4 wall paint.</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-harbour">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-harbour')">&times;</button>
+            <h3>Harbour Side Restaurant Concept</h3>
+            <p class="project-date">28/10/2026</p>
+            <p style="margin-top: 1rem;">Blends Lucayan heritage (hand-woven straw, coral stone, limestone) and maritime history (rope, brass, weathered driftwood) with Junkanoo and Kalik energy—featuring ocean blues, Bluebird Skies paint, bold patterns, a central feature piece, and structured dining, banquette, and bar zones.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Kalila Roberts • Interior Design Portfolio • Nassau, The Bahamas</p>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const current = body.getAttribute('data-theme');
+            body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+        }
+
+        function toggleEditMode() {
+            const isEditable = document.body.contentEditable === 'true';
+            document.body.contentEditable = !isEditable;
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+    </script>
+</body>
+</html>
